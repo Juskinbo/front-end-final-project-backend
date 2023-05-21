@@ -1,0 +1,25 @@
+{
+  "name": "front-end-final-project-backend",
+  "version": "1.0.0",
+  "description": "The backend part of the front-end-final-project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juskinbo/front-end-final-project-backend.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Juskinbo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juskinbo/front-end-final-project-backend/issues"
+  },
+  "homepage": "https://github.com/Juskinbo/front-end-final-project-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
