@@ -218,6 +218,31 @@ app.get("/list:id", (req, res) => {
     res.status(200).json(results)
   })
 })
+app.get("/type:id", (req, res) => {
+  // 党务信息
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "X-Requested-With")
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild"
+  )
+  res.header("X-Powered-By", " 3.2.1")
+  res.header("Content-Type", "application/json;charset=utf-8")
+  const category_id = req.params.id
+  console.log(category_id)
+
+  // 从Categories中寻找这条与category_id相同的数据，获取father_category_id，再找出所有相同的father_category_id的数据
+  const query = `SELECT * FROM Categories WHERE father_category_id = (SELECT father_category_id FROM Categories WHERE category_id = ${category_id});`
+  connection.query(query, (error, results, fields) => {
+    if (error) {
+      console.error("Error retrieving data from MySQL database: ", error)
+      res.status(500).send("Error retrieving data from MySQL database.")
+      return
+    }
+    res.status(200).json(results)
+  })
+})
 app.listen(port, () => {
   console.log(`Express app listening at http://localhost:${port}`)
 })
